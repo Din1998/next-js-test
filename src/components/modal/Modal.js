@@ -77,7 +77,7 @@ function UserModal({Input, SetInput, user, addUser}) {
                 </div>
               </div>
                 <div className="col-6">
-                  <button className="btn mt-3" variant="dark" onClick={handleClose}>Add</button>
+                  <button className="btn btn-info mt-3" variant="dark" onClick={handleClose}>Add</button>
                 </div>        
             </form>
         </Modal.Body>
