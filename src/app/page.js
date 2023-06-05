@@ -1,15 +1,22 @@
 "use client"
 
-import Image from 'next/image'
-import styles from './page.module.css'
+import {useState} from 'react';
 import Stack from '@mui/material/Stack';
-import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
 
-
-import Modal from'../components/modal/Modal'
+import UserModal from'../components/modal/Modal'
 
 export default function Home() {
+
+  const [Input,SetInput] = useState({
+    Name:"",
+    Email:"",
+    Address:"",
+  });
+  const [user,addUser] = useState([]);
+
+  console.log(user)
+
   return (
    <div>
     <Grid
@@ -20,7 +27,10 @@ export default function Home() {
       sx={{ px: 5 }}
     >
       <Stack spacing={2} direction="row" sx={{ mt: 5 }}>
-        <Modal />
+
+
+        <UserModal Input={Input} SetInput={SetInput} user={user} addUser={addUser} />
+
       </Stack>
     </Grid>
     
