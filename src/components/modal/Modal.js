@@ -1,22 +1,34 @@
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import axios from 'axios';
 
 
-function UserModal({Input, SetInput, user, addUser}) {
+function UserModal({blog,addBlog}) {
 
-  const onInputChange = (e) => {
-    SetInput((prev) => ({...prev,[e.target.name]:e.target.value}))
+
+ 
+
+  const handleChange = (e) => {
+    addBlog((prev) => ({...prev,[e.target.name]:e.target.value}))
   }
 
-  
 
-  const onFormSubmit = (event) => {
+  // add post
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    addUser([...user,Input ]);
-    SetInput("")
+    try{
+      await axios.post("https://server2023.vercel.app/api/post",blog);
+    }catch(err){
+      console.log(err)
+    }
   }
 
+// delete post
+
+
+
+// ------ modal state 
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -30,49 +42,61 @@ function UserModal({Input, SetInput, user, addUser}) {
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
+          <Modal.Title>Add post</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <form className="py-2" onSubmit={onFormSubmit}>
+          <form className="py-2" onSubmit={handleSubmit}>
               <div className="row mb-3">
                 <div className="col-6">
-                  <label  className="form-label">Name</label>
+                  <label  className="form-label">Title</label>
                   <input 
-                    name="Name"
+                    name="title"
                     type="text" 
                     required={true} 
                     className="form-control" 
           
                     aria-describedby="emailHelp" 
-                    onChange={onInputChange}
+                    onChange={handleChange}
                 
                   />
                 </div>
                 <div className="col-6">
-                  <label className="form-label">Email</label>
+                  <label className="form-label">Discription</label>
                   <input 
-                    name="Email"
+                    name="discription"
                     type="text" 
                     required={true} 
                     className="form-control" 
                   
                     aria-describedby="emailHelp" 
-                    onChange={onInputChange}
+                    onChange={handleChange}
                   />
                 </div>
               </div>
 
               <div className="row mb-3">
                 <div className="col-6">
-                  <label  className="form-label">Address</label>
+                  <label  className="form-label">Full Discription</label>
                   <input 
-                    name="Address"
+                    name="fullDiscription"
                     type="text" 
                     required={true} 
                     className="form-control" 
                     
                     aria-describedby="emailHelp" 
-                    onChange={onInputChange}
+                    onChange={handleChange}
+                  />
+                </div>
+                <div className="col-6">
+                  <label  className="form-label">Image Url</label>
+                  <input 
+                    name="imageUrl"
+                    type="text" 
+                    required={true} 
+                    className="form-control" 
+                    
+                    aria-describedby="emailHelp" 
+                    onChange={handleChange}
                   />
                 </div>
               </div>
