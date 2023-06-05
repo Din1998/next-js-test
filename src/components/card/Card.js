@@ -3,7 +3,7 @@
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
-
+import styles from './card.module.css';
 
 export default function UserCard({post,blog}) {
   
@@ -20,11 +20,11 @@ export default function UserCard({post,blog}) {
   };
 
   return(
-    <div className='d-flex py-5 justify-content-center flex-row align-items-center flex-wrap'>
+    <div className={styles.cardContainer}>
       {post.map((index,i) => {
         console.log(index)
       return(
-        <Card key={i}  style={{ width: '28rem',margin: "12px",maxHeight:"320px",overflowX:"hidden",overflowY:"scroll" }}>
+        <Card key={i}  style={{ width: '32rem',margin: "12px",maxHeight:"420px",overflowX:"hidden",overflowY:"scroll" }}>
           <Card.Body>
             <Card.Img variant="top" style={{width:"100%",height:"80px",objectFit:"cover"}} src={index.imageUrl} />
             <Card.Title className='pt-5'>{index.title}</Card.Title>
