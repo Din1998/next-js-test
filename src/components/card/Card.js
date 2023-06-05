@@ -5,10 +5,10 @@ export default function UserCard({user}) {
 
   return(
     <div className='d-flex justify-content-start flex-row align-items-center flex-wrap'>
-      {user.map((index) => {
+      {user.map((index,i) => {
         console.log(index)
       return(
-        <Card  style={{ width: '18rem',margin: "12px" }}>
+        <Card key={i}  style={{ width: '18rem',margin: "12px" }}>
           <Card.Body>
             <Card.Title>{index.Name}</Card.Title>
             <Card.Subtitle className="mb-2 text-muted">{index.Email}</Card.Subtitle>
