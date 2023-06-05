@@ -42,10 +42,10 @@ export default function Home() {
           <UserModal blog={blog} addBlog={addBlog} />
         </div>
       </div>
-      <div className='row'>
-        <div className='col-md-12'>
+      <div>
+
           <UserCard post={post} blog={blog}/>
-        </div>  
+
       </div>
     </div>
   )
