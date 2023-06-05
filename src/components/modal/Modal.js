@@ -24,8 +24,6 @@ function UserModal({blog,addBlog}) {
     }
   }
 
-// delete post
-
 
 
 // ------ modal state 
@@ -37,7 +35,7 @@ function UserModal({blog,addBlog}) {
   return (
     <>
       <Button variant="primary" onClick={handleShow}>
-        Add User
+        Add New Post
       </Button>
 
       <Modal show={show} onHide={handleClose}>
