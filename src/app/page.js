@@ -1,6 +1,7 @@
 "use client"
 
-import {useState} from 'react';
+import {useState,useEffect} from 'react';
+import axios from 'axios';
 
 
 import UserModal from'../components/modal/Modal'
@@ -8,25 +9,42 @@ import UserCard from '@/components/card/Card';
 
 export default function Home() {
 
-  const [Input,SetInput] = useState({
-    Name:"",
-    Email:"",
-    Address:"",
-  });
-  const [user,addUser] = useState([]);
+  const [blog,addBlog] = useState({
+    title: "",
+    discription: "",
+    fullDiscription: "",
+    imageUrl: ""
+  })
 
-  console.log(user)
+
+
+  const [post,addPost] = useState([])
+
+  useEffect(() => {
+    const getAllPost = async () => {
+      try{
+        const res = await axios.get(`https://server2023.vercel.app/api`);
+        addPost(res.data)
+      } catch(err) {
+        console.log(err)
+      }
+    };
+    setInterval(() => getAllPost(), 3000)
+    
+  },[])
+
+  console.log(post)
 
   return (
     <div className='container'>
       <div className='row'>
         <div className='col-md-12 py-5'>
-          <UserModal Input={Input} SetInput={SetInput} user={user} addUser={addUser} />
+          <UserModal blog={blog} addBlog={addBlog} />
         </div>
       </div>
       <div className='row'>
-        <div className='d-flex justify-content-center flex-row align-items-center flex-wrap'>
-          <UserCard user={user} />
+        <div className='col-md-12'>
+          <UserCard post={post} blog={blog}/>
         </div>  
       </div>
     </div>
