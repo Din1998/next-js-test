@@ -24,12 +24,12 @@ export default function UserCard({post,blog}) {
       {post.map((index,i) => {
         console.log(index)
       return(
-        <Card key={i}  style={{ width: '32rem',margin: "12px",maxHeight:"420px",overflowX:"hidden",overflowY:"scroll" }}>
+        <Card key={i}  style={{ width: '32rem',margin: "12px",maxHeight:"480px" }}>
           <Card.Body>
-            <Card.Img variant="top" style={{width:"100%",height:"80px",objectFit:"cover"}} src={index.imageUrl} />
-            <Card.Title className='pt-5'>{index.title}</Card.Title>
+            <Card.Img variant="top" style={{width:"100%",height:"120px",objectFit:"cover"}} src={index.imageUrl} />
+            <Card.Title className='pt-5' >{index.title}</Card.Title>
             <Card.Subtitle className="mb-2 text-muted">{index.discription}</Card.Subtitle>
-              <Card.Text>
+              <Card.Text style={{maxHeight:"78px",overflowX:"hidden",overflowY:"scroll" }}>
               {index.fullDiscription}
               </Card.Text>
               <footer className="blockquote-footer">
