@@ -26,7 +26,7 @@ export default function UserCard({post,blog}) {
       return(
         <Card key={i}  style={{ width: '32rem',margin: "12px",maxHeight:"480px" }}>
           <Card.Body>
-            <Card.Img variant="top" style={{width:"100%",height:"80px",objectFit:"cover"}} src={index.imageUrl} />
+            <Card.Img variant="top" style={{width:"100%",height:"120px",objectFit:"cover"}} src={index.imageUrl} />
             <Card.Title className='pt-5' >{index.title}</Card.Title>
             <Card.Subtitle className="mb-2 text-muted">{index.discription}</Card.Subtitle>
               <Card.Text style={{maxHeight:"78px",overflowX:"hidden",overflowY:"scroll" }}>
